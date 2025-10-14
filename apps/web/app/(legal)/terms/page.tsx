@@ -150,7 +150,7 @@ export default function TermsPage() {
           <section className="mt-8">
             <h2 className="text-2xl font-semibold text-gray-900">13. Governing Law</h2>
             <p className="mt-4 text-gray-600">
-              These terms are governed by the laws of California, USA. Disputes shall be resolved through binding arbitration in San Francisco, California.
+              These terms are governed by the laws of Florida, USA. Disputes shall be resolved through binding arbitration in Miami, Florida.
             </p>
           </section>
 
@@ -165,9 +165,9 @@ export default function TermsPage() {
             <h2 className="text-2xl font-semibold text-gray-900">15. Contact Information</h2>
             <div className="mt-4 text-gray-600">
               <p>OptAImum Consulting</p>
-              <p>Email: legal@optaimum.com</p>
-              <p>Phone: (415) 555-0100</p>
-              <p>Address: 548 Market Street, Suite 12345, San Francisco, CA 94104</p>
+              <p>Email: optaimum@gmail.com</p>
+              <p>Phone: (202) 320-1890</p>
+              <p>Address: 1100 S Miami Ave, Miami, FL 33130</p>
             </div>
           </section>
         </div>

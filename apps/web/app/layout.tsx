@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Header } from '@/components/navigation/Header'
 import { Footer } from '@/components/footer/Footer'
@@ -7,6 +7,15 @@ import { PostHogProvider, PostHogPageView } from '@/components/analytics/PostHog
 import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+  themeColor: '#667eea',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.optaimum.com'),
@@ -98,11 +107,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen bg-white font-sans antialiased">
+      <body className="min-h-screen-safe bg-white font-sans antialiased">
         <PostHogProvider>
           <GoogleAnalytics />
           <PostHogPageView />
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen-safe flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />

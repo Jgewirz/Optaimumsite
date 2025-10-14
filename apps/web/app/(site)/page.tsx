@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { CalendlyButton } from '@/components/CalendlyButton'
 import { Copy } from '@/content/copy'
+import { metrics } from '@/content/impact'
+import { ImpactGrid } from '@/components/metrics/impact-grid'
 import {
   Brain,
   Zap,
@@ -24,13 +26,13 @@ export default function HomePage() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'OptAImum',
+    name: 'OptAImum Consulting',
     url: 'https://www.optaimum.com',
     logo: 'https://www.optaimum.com/logo.png',
     description: 'We design small, high-leverage automations that pay for themselves in weeks—not months.',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-415-555-0100',
+      telephone: '+1-202-320-1890',
       contactType: 'sales',
       areaServed: 'US',
       availableLanguage: 'English'
@@ -41,10 +43,10 @@ export default function HomePage() {
     ],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '548 Market Street, Suite 12345',
-      addressLocality: 'San Francisco',
-      addressRegion: 'CA',
-      postalCode: '94104',
+      streetAddress: '1100 S Miami Ave',
+      addressLocality: 'Miami',
+      addressRegion: 'FL',
+      postalCode: '33130',
       addressCountry: 'US'
     }
   }
@@ -52,7 +54,7 @@ export default function HomePage() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'OptAImum',
+    name: 'OptAImum Consulting',
     url: 'https://www.optaimum.com',
     description: 'Practical AI automation for SMBs',
     potentialAction: {
@@ -132,6 +134,42 @@ export default function HomePage() {
                 <p className="text-sm text-gray-600 mt-1">{stat.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Metrics Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              The AI Impact on SMBs Is Real
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Research shows small businesses using AI save 20+ hours per week.
+              Here's what the data tells us about AI automation in practice.
+            </p>
+          </div>
+
+          {/* Featured Metrics Grid */}
+          <ImpactGrid
+            metrics={metrics.slice(0, 4)}
+            columns={2}
+            featured={['hoursSaved', 'revenueLift']}
+            className="mb-12"
+          />
+
+          {/* Call to Action */}
+          <div className="text-center">
+            <p className="text-sm text-gray-600 mb-4">
+              Based on research from McKinsey, Salesforce, and Intuit QuickBooks
+            </p>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/impact">
+                View Full Research & Methodology
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

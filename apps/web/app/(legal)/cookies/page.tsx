@@ -182,9 +182,9 @@ export default function CookiesPage() {
             </p>
             <div className="mt-4 text-gray-600">
               <p>OptAImum Consulting</p>
-              <p>Email: privacy@optaimum.com</p>
-              <p>Phone: (415) 555-0100</p>
-              <p>Address: 548 Market Street, Suite 12345, San Francisco, CA 94104</p>
+              <p>Email: optaimum@gmail.com</p>
+              <p>Phone: (202) 320-1890</p>
+              <p>Address: 1100 S Miami Ave, Miami, FL 33130</p>
             </div>
           </section>
         </div>

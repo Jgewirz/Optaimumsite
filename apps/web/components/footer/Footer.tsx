@@ -154,16 +154,16 @@ export function Footer() {
         <div className="border-t border-gray-200 py-8">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-gray-900">OptAImum</span>
+              <span className="text-xl font-bold text-gray-900">OptAImum Consulting</span>
             </div>
             <p className="mt-4 text-sm text-gray-600 md:mt-0">
               © {new Date().getFullYear()} OptAImum Consulting. All rights reserved.
             </p>
           </div>
           <div className="mt-4 text-sm text-gray-500">
-            <p>548 Market Street, Suite 12345</p>
-            <p>San Francisco, CA 94104</p>
-            <p>team@optaimum.com • (415) 555-0100</p>
+            <p>1100 S Miami Ave</p>
+            <p>Miami, FL 33130</p>
+            <p>optaimum@gmail.com • (202) 320-1890</p>
           </div>
         </div>
       </div>

@@ -78,8 +78,8 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-blue-600 flex-shrink-0" />
                   <div className="ml-4">
                     <p className="text-sm font-semibold text-gray-900">Email</p>
-                    <a href="mailto:team@optaimum.com" className="mt-1 text-sm text-gray-600 hover:text-blue-600">
-                      team@optaimum.com
+                    <a href="mailto:optaimum@gmail.com" className="mt-1 text-sm text-gray-600 hover:text-blue-600">
+                      optaimum@gmail.com
                     </a>
                   </div>
                 </div>
@@ -88,8 +88,8 @@ export default function ContactPage() {
                   <Phone className="h-6 w-6 text-blue-600 flex-shrink-0" />
                   <div className="ml-4">
                     <p className="text-sm font-semibold text-gray-900">Phone</p>
-                    <a href="tel:+14155550100" className="mt-1 text-sm text-gray-600 hover:text-blue-600">
-                      (415) 555-0100
+                    <a href="tel:+12023201890" className="mt-1 text-sm text-gray-600 hover:text-blue-600">
+                      (202) 320-1890
                     </a>
                   </div>
                 </div>
@@ -99,8 +99,8 @@ export default function ContactPage() {
                   <div className="ml-4">
                     <p className="text-sm font-semibold text-gray-900">Office</p>
                     <p className="mt-1 text-sm text-gray-600">
-                      548 Market Street, Suite 12345<br />
-                      San Francisco, CA 94104
+                      1100 S Miami Ave<br />
+                      Miami, FL 33130
                     </p>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
       <section className="border-t border-gray-100 py-12 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">Why Teams Choose OptAImum</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Why Teams Choose OptAImum Consulting</h2>
           </div>
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
