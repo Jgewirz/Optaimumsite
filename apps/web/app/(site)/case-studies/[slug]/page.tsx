@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, TrendingUp, Clock, DollarSign, Users, Zap } from 'lucide-react'
 import caseStudiesData from '@/content/case-studies.json'
 
-const iconMap: { [key: string]: any } = {
+const _iconMap: { [key: string]: any } = {
   revenue: DollarSign,
   time: Clock,
   users: Users,
@@ -86,30 +86,50 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Key Results</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {Object.entries(study.metrics).map(([key, metric]: [string, any]) => {
-              const isPositive = metric.improvement.includes('+') ||
-                                metric.improvement.includes('x') ||
-                                !metric.improvement.includes('-')
+              // Check if metric has improvement field (before/after metrics) or value field (summary metrics)
+              const hasImprovement = metric.improvement !== undefined
+              const isPositive = hasImprovement && metric.improvement && (
+                metric.improvement.includes('+') ||
+                metric.improvement.includes('x') ||
+                !metric.improvement.includes('-')
+              )
+
               return (
                 <div key={key} className="bg-white rounded-lg p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-medium text-gray-600">{metric.label}</span>
                     <TrendingUp className={`h-5 w-5 ${isPositive ? 'text-green-500' : 'text-blue-500'}`} />
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex items-baseline justify-between">
-                      <span className="text-sm text-gray-500">Before:</span>
-                      <span className="text-sm font-medium text-gray-700">{metric.before}</span>
+                  {hasImprovement ? (
+                    <div className="space-y-2">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-sm text-gray-500">Before:</span>
+                        <span className="text-sm font-medium text-gray-700">{metric.before}</span>
+                      </div>
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-sm text-gray-500">After:</span>
+                        <span className="text-sm font-medium text-gray-900">{metric.after}</span>
+                      </div>
+                      <div className="pt-2 border-t">
+                        <p className={`text-2xl font-bold ${isPositive ? 'text-green-600' : 'text-blue-600'}`}>
+                          {metric.improvement}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex items-baseline justify-between">
-                      <span className="text-sm text-gray-500">After:</span>
-                      <span className="text-sm font-medium text-gray-900">{metric.after}</span>
+                  ) : (
+                    <div className="space-y-2">
+                      <div className="pt-2">
+                        <p className="text-3xl font-bold text-optaimum-blue">
+                          {metric.value}
+                        </p>
+                      </div>
+                      {metric.timeframe && (
+                        <p className="text-sm text-gray-600">
+                          {metric.timeframe}
+                        </p>
+                      )}
                     </div>
-                    <div className="pt-2 border-t">
-                      <p className={`text-2xl font-bold ${isPositive ? 'text-green-600' : 'text-blue-600'}`}>
-                        {metric.improvement}
-                      </p>
-                    </div>
-                  </div>
+                  )}
                 </div>
               )
             })}
@@ -160,7 +180,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
         <section className="py-16 bg-gray-50">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="relative">
-              <div className="absolute -top-4 -left-4 text-6xl text-gray-300">"</div>
+              <div className="absolute -top-4 -left-4 text-6xl text-gray-300">&ldquo;</div>
               <blockquote className="relative z-10">
                 <p className="text-xl text-gray-700 italic">
                   {study.testimonial.quote}
@@ -187,7 +207,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
               Ready for Similar Results?
             </h2>
             <p className="mt-4 text-lg text-white/90 max-w-2xl mx-auto">
-              Let's discuss how we can help you achieve similar transformations in your organization.
+              Let&rsquo;s discuss how we can help you achieve similar transformations in your organization.
             </p>
             <div className="mt-8 flex gap-4 justify-center">
               <Link

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { Suspense } from 'react'
 import { Header } from '@/components/navigation/Header'
 import { Footer } from '@/components/footer/Footer'
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
@@ -110,7 +111,9 @@ export default function RootLayout({
       <body className="min-h-screen-safe bg-white font-sans antialiased">
         <PostHogProvider>
           <GoogleAnalytics />
-          <PostHogPageView />
+          <Suspense fallback={null}>
+            <PostHogPageView />
+          </Suspense>
           <div className="flex min-h-screen-safe flex-col">
             <Header />
             <main className="flex-1">{children}</main>
