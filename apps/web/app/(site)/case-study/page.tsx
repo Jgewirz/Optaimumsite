@@ -1,409 +1,448 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { CalendlyButton } from '@/components/CalendlyButton'
-import { Copy } from '@/content/copy'
-import { ArrowRight, TrendingUp, Users, Zap, BarChart3, Clock, DollarSign, AlertCircle, CheckCircle, Target, Shield } from 'lucide-react'
+import { CalendlyCTA } from '@/components/CalendlyCTA'
+import {
+  ArrowRight, TrendingUp, Users, Zap, Clock, DollarSign,
+  AlertCircle, CheckCircle, Target, Shield, ChevronRight, Star,
+  TrendingDown, Rocket, Award, MessageSquare, Phone, Building2,
+  Activity, Calendar, UserCheck, Quote
+} from 'lucide-react'
+
+// Real Results Data
+const resultsData = [
+  {
+    client: "Dental Practice",
+    metric: "32%",
+    detail: "fewer no-shows",
+    timeframe: "in 3 weeks",
+    icon: Calendar,
+    color: "blue"
+  },
+  {
+    client: "Home Services",
+    metric: "47min",
+    detail: "response time",
+    timeframe: "down from 14hrs",
+    icon: Clock,
+    color: "green"
+  },
+  {
+    client: "Law Firm",
+    metric: "25hrs",
+    detail: "saved weekly",
+    timeframe: "on intake alone",
+    icon: TrendingUp,
+    color: "purple"
+  }
+]
+
+// Testimonials
+const testimonials = [
+  {
+    quote: "We went from losing 3-4 appointments daily to almost zero no-shows. The ROI was immediate.",
+    author: "Dr. Sarah Chen",
+    role: "Dental Practice Owner",
+    result: "Saved $40k/year"
+  },
+  {
+    quote: "Our team saved 25 hours per week just on intake. We can actually focus on serving clients now.",
+    author: "Michael Rodriguez",
+    role: "Managing Partner",
+    result: "5x faster intake"
+  },
+  {
+    quote: "Lead response time went from next-day to under an hour. We're booking 40% more jobs.",
+    author: "Tom Mitchell",
+    role: "HVAC Business Owner",
+    result: "40% more revenue"
+  }
+]
+
+// Process Timeline
+const processSteps = [
+  {
+    week: "Week 1-2",
+    title: "Find Your Time-Wasters",
+    description: "We shadow your team and identify the biggest bottlenecks",
+    icon: Target
+  },
+  {
+    week: "Week 3-4",
+    title: "Build & Test Solutions",
+    description: "Create simple automations that actually work",
+    icon: Zap
+  },
+  {
+    week: "Week 5-6",
+    title: "Train Your Team",
+    description: "Hands-on training until everyone's confident",
+    icon: Users
+  },
+  {
+    week: "Month 2+",
+    title: "Scale & Support",
+    description: "Weekly check-ins and continuous improvement",
+    icon: Rocket
+  }
+]
 
 export default function CaseStudyPage() {
+  const [email, setEmail] = useState('')
+
   return (
     <div className="bg-white">
-      {/* Hero Section - SMB Focused */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Hero Section - Cleaner, more focused */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50 py-16 sm:py-20">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-800 mb-4">
-              Industry Research
-            </span>
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              Why SMBs Can't Afford to Wait:
-              <span className="block gradient-text mt-2">The Real Cost of Manual Processes</span>
+            {/* One-line value prop */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+              AI-powered automation for SMBs
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 mt-2">
+                Big-firm results at ⅓ the price
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-              While McKinsey charges Fortune 500s millions for digital transformation,
-              we're helping real businesses automate for a fraction of the cost—with the same results.
+
+            <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-gray-600">
+              Same results. ⅓ the price. 10x the hand-holding.
+              We fix the problems costing you $6,400+ every month.
             </p>
-            <div className="mt-6 p-4 bg-blue-50 rounded-xl inline-block">
-              <p className="text-sm font-semibold text-blue-900">
-                {Copy.caseStudy.differentiator}
-              </p>
+
+            {/* Primary and Secondary CTAs */}
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <CalendlyCTA
+                mode="popup"
+                buttonClassName="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl hover:shadow-2xl"
+                text="Book Free Assessment"
+                size="lg"
+                showIcon={true}
+              />
+
+              <a
+                href="#process"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-lg border-2 border-blue-200 hover:bg-blue-50 transition-colors"
+              >
+                See How We Work
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </a>
+            </div>
+
+            {/* Trust badges */}
+            <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span className="text-gray-600">30-Day Results</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5 text-blue-600" />
+                <span className="text-gray-600">No Lock-ins</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="h-5 w-5 text-purple-600" />
+                <span className="text-gray-600">100+ SMBs</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Statistics - SMB Reality Check */}
-      <section className="border-y border-gray-100 bg-white py-12">
+      {/* Social Proof & Results - Visual Cards */}
+      <section className="py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-medium text-gray-500 mb-6">THE HARSH REALITY FOR SMBS</p>
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-red-600">$77k/yr</p>
-              <p className="mt-2 text-sm text-gray-600">lost to inefficiency</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-orange-600">23%</p>
-              <p className="mt-2 text-sm text-gray-600">of time on data entry</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">14 hrs</p>
-              <p className="mt-2 text-sm text-gray-600">avg response time</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-blue-600">70%</p>
-              <p className="mt-2 text-sm text-gray-600">haven't automated</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem - Plain English */}
-      <section className="py-20">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Your Team is Drowning in Busy Work</h2>
-            <p className="mt-4 text-lg text-gray-600">
-              And big consultancies won't help unless you have a million-dollar budget
-            </p>
-          </div>
-
-          <div className="prose prose-lg mx-auto">
-            <div className="bg-gray-50 border-l-4 border-blue-600 p-6 mb-8">
-              <p className="font-semibold text-gray-900 mb-2">The McKinsey Paradox:</p>
-              <p className="text-gray-700">
-                McKinsey's research proves SMBs need automation to survive. But their solutions
-                start at $500k. That's like telling someone drowning they need swimming lessons—at
-                country club prices.
-              </p>
-            </div>
-
-            <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6">What's Actually Happening in Your Business</h3>
-
-            <div className="space-y-6 mb-8">
-              <div className="flex gap-4">
-                <AlertCircle className="h-6 w-6 text-red-500 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-gray-900">Your front desk spends 3 hours daily on scheduling</p>
-                  <p className="text-gray-600 mt-1">
-                    Playing phone tag, sending reminders, updating calendars. Meanwhile,
-                    customers wait and competitors with online booking steal your business.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <AlertCircle className="h-6 w-6 text-orange-500 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-gray-900">Leads sit in your inbox for hours (or days)</p>
-                  <p className="text-gray-600 mt-1">
-                    By the time someone responds, that hot lead went cold—and probably
-                    went to whoever answered first. Studies show 78% of customers buy from
-                    the first responder.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <AlertCircle className="h-6 w-6 text-purple-500 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-gray-900">Your best people do admin work</p>
-                  <p className="text-gray-600 mt-1">
-                    Skilled employees waste 20+ hours weekly on repetitive tasks. That's
-                    half their week not selling, not serving customers, not growing your business.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Why Most SMBs Stay Stuck</h3>
-
-            <div className="grid gap-6 mb-8">
-              <div className="border rounded-lg p-6 bg-white">
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  🚫 Big Tech Solutions = Big Tech Problems
-                </h4>
-                <p className="text-gray-700">
-                  Enterprise software needs IT teams you don't have. Six-month implementations
-                  for problems you need solved this month. Training so complex your team gives up.
-                </p>
-              </div>
-
-              <div className="border rounded-lg p-6 bg-white">
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  🚫 DIY Tools = Death by 1000 Apps
-                </h4>
-                <p className="text-gray-700">
-                  Zapier, IFTTT, Make.com—great if you have time to become a automation expert.
-                  Most SMBs end up with 15 half-working automations that break constantly.
-                </p>
-              </div>
-
-              <div className="border rounded-lg p-6 bg-white">
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  🚫 Consultants = Boardroom Prices
-                </h4>
-                <p className="text-gray-700">
-                  McKinsey, Accenture, Deloitte—they'll gladly help. For $50k/month minimum.
-                  Plus travel. Plus expenses. Plus a 40-page report you'll never implement.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Solution - OptAImum Way */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-20">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              There's a Better Way (And It's Affordable)
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Real SMBs, Real Results
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Simple automations. Full training. Fraction of the price.
+            <p className="text-xl text-gray-600">
+              Not theory. Actual results from businesses like yours.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">The OptAImum Difference</h3>
-
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-gray-900">We speak SMB, not MBA</p>
-                  <p className="text-gray-600 mt-1">
-                    No jargon. No 40-page reports. Just "here's the problem, here's the fix,
-                    here's how to use it." Your team gets it on day one.
-                  </p>
+          {/* Results Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {resultsData.map((result, index) => (
+              <div key={index} className={`bg-white rounded-xl shadow-lg p-8 border-t-4 border-${result.color}-500 hover:shadow-xl transition-all`}>
+                <div className="flex items-center justify-between mb-4">
+                  <result.icon className={`h-10 w-10 text-${result.color}-500`} />
+                  <span className="text-sm font-semibold text-gray-500">{result.client}</span>
                 </div>
+                <p className={`text-4xl font-bold text-${result.color}-600 mb-2`}>{result.metric}</p>
+                <p className="text-lg font-semibold text-gray-900">{result.detail}</p>
+                <p className="text-sm text-gray-600 mt-2">{result.timeframe}</p>
               </div>
-
-              <div className="flex gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-gray-900">Training until they're confident</p>
-                  <p className="text-gray-600 mt-1">
-                    SOPs, Loom videos, live office hours. We don't disappear after deployment.
-                    We stick around until every team member is comfortable. That's the hand-holding
-                    you actually need.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-gray-900">Built for budgets that matter</p>
-                  <p className="text-gray-600 mt-1">
-                    Start at $3k. See results in 30 days. Scale when ready. No lock-ins,
-                    no surprises, no "scope creep" that doubles your bill.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 p-6 bg-blue-50 rounded-xl">
-              <p className="text-center font-bold text-blue-900">
-                {Copy.footer.note}
-              </p>
-            </div>
+            ))}
           </div>
 
-          {/* Real Results */}
-          <div className="grid gap-6">
-            <h3 className="text-2xl font-bold text-gray-900 text-center">
-              Real SMBs, Real Results, Real Fast
-            </h3>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="border rounded-lg p-6 bg-white text-center">
-                <p className="text-sm font-semibold text-gray-500 mb-2">DENTAL PRACTICE</p>
-                <p className="text-3xl font-bold text-green-600">32%</p>
-                <p className="text-sm text-gray-600 mt-1">fewer no-shows</p>
-                <p className="text-xs text-gray-500 mt-2">in 3 weeks</p>
-              </div>
-
-              <div className="border rounded-lg p-6 bg-white text-center">
-                <p className="text-sm font-semibold text-gray-500 mb-2">HOME SERVICES</p>
-                <p className="text-3xl font-bold text-blue-600">47min</p>
-                <p className="text-sm text-gray-600 mt-1">lead response</p>
-                <p className="text-xs text-gray-500 mt-2">down from 14hrs</p>
-              </div>
-
-              <div className="border rounded-lg p-6 bg-white text-center">
-                <p className="text-sm font-semibold text-gray-500 mb-2">LAW FIRM</p>
-                <p className="text-3xl font-bold text-purple-600">25hrs</p>
-                <p className="text-sm text-gray-600 mt-1">saved weekly</p>
-                <p className="text-xs text-gray-500 mt-2">on intake alone</p>
-              </div>
-            </div>
+          {/* CTA after results */}
+          <div className="text-center">
+            <CalendlyCTA
+              mode="popup"
+              buttonClassName="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 shadow-lg"
+              text="Get Similar Results"
+              showIcon={true}
+            />
           </div>
         </div>
       </section>
 
-      {/* The Process */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      {/* Testimonials Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              How We Actually Get You Results
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              What Our Clients Say
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              No 6-month roadmaps. No analysis paralysis. Just action.
-            </p>
           </div>
 
-          <div className="space-y-8">
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                  <span className="text-blue-600 font-bold">1</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-8 relative">
+                <Quote className="absolute top-4 right-4 h-8 w-8 text-gray-200" />
+                <div className="flex mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="text-gray-700 mb-6 italic relative z-10">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div className="border-t pt-4">
+                  <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <p className="text-sm font-semibold text-green-600 mt-2">{testimonial.result}</p>
                 </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Week 1-2: We Find Your Biggest Time-Wasters
-                </h3>
-                <p className="text-gray-600">
-                  Not a 200-page audit. We shadow your team for a few days, spot the obvious
-                  problems (there's always 2-3 big ones), and show you exactly how much they cost.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                  <span className="text-green-600 font-bold">2</span>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Week 3-4: We Build & Test Simple Fixes
-                </h3>
-                <p className="text-gray-600">
-                  Start with one workflow. Make it bulletproof. Test with your actual team,
-                  not in a lab. Fix what breaks. No "beta testing" on your dime.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
-                  <span className="text-purple-600 font-bold">3</span>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Week 5-6: We Train Until They're Confident
-                </h3>
-                <p className="text-gray-600">
-                  Not a one-hour Zoom and goodbye. Real training with real scenarios.
-                  SOPs they'll actually use. Videos they can rewatch. Office hours when they're stuck.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-                  <span className="text-orange-600 font-bold">4</span>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Month 2+: We Stay Close & Scale Smart
-                </h3>
-                <p className="text-gray-600">
-                  Weekly check-ins. Quick fixes. New automations when you're ready.
-                  No disappearing act. No "that's out of scope." Just continuous improvement.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* The Warning */}
-      <section className="bg-gradient-to-b from-red-50 to-white py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-red-200">
+      {/* Process Timeline - Visual */}
+      <section id="process" className="py-16 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              From Problem to Solution in 30 Days
+            </h2>
+            <p className="text-xl text-gray-600">
+              Our proven 4-step process gets you results fast
+            </p>
+          </div>
+
+          {/* Desktop Timeline */}
+          <div className="hidden md:block relative">
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-200 via-green-200 to-purple-200 transform -translate-y-1/2"></div>
+
+            <div className="relative grid grid-cols-4 gap-8">
+              {processSteps.map((step, index) => (
+                <div key={index} className="relative">
+                  <div className="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center border-4 border-blue-500 z-10">
+                    <step.icon className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <div className="mt-6 text-center">
+                    <p className="text-sm font-semibold text-blue-600 mb-2">{step.week}</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                    <p className="text-sm text-gray-600">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Timeline */}
+          <div className="md:hidden space-y-8">
+            {processSteps.map((step, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center border-4 border-blue-500">
+                  <step.icon className="h-6 w-6 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-blue-600">{step.week}</p>
+                  <h3 className="text-lg font-bold text-gray-900">{step.title}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA after process */}
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-700 mb-6">Ready to start Week 1?</p>
+            <CalendlyCTA
+              mode="popup"
+              buttonClassName="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-3 shadow-lg"
+              text="Book Free Assessment"
+              showIcon={true}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Urgency & Cost of Inaction */}
+      <section className="py-16 bg-gradient-to-r from-red-50 to-orange-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-l-4 border-red-500">
             <div className="text-center">
               <AlertCircle className="h-12 w-12 text-red-600 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Every Month You Wait Costs You Money
               </h2>
-              <div className="space-y-3 text-left max-w-2xl mx-auto">
-                <p className="text-gray-700">
-                  <strong>Right now:</strong> Your competitors are automating. They're responding
-                  to leads in minutes while you take hours. They're reducing no-shows while you
-                  eat the cost.
-                </p>
-                <p className="text-gray-700">
-                  <strong>Next month:</strong> You'll lose another $6,400 to inefficiency
-                  (that's $77k/year ÷ 12). Another 100+ hours of busy work. Another stack of
-                  leads that went cold.
-                </p>
-                <p className="text-gray-700">
-                  <strong>Six months from now:</strong> The gap between you and automated
-                  competitors will be a canyon. They'll have refined their systems, captured
-                  more market share, and locked in customer habits.
-                </p>
+
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                <div className="text-center">
+                  <p className="text-4xl font-bold text-red-600">$77k</p>
+                  <p className="text-gray-700">yearly loss to inefficiency</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-4xl font-bold text-orange-600">$6,400</p>
+                  <p className="text-gray-700">monthly opportunity cost</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-4xl font-bold text-purple-600">100+</p>
+                  <p className="text-gray-700">hours of busy work</p>
+                </div>
               </div>
-              <div className="mt-6 p-4 bg-red-50 rounded-xl">
-                <p className="text-red-900 font-semibold">
-                  The best time to automate was last year. The second best time is today.
-                </p>
-              </div>
+
+              <p className="text-lg text-gray-700 mb-8">
+                Your competitors are automating right now. Every day you wait, they pull further ahead.
+              </p>
+
+              <CalendlyCTA
+                mode="popup"
+                buttonClassName="bg-gradient-to-r from-red-600 to-orange-600 text-white px-10 py-4 text-lg shadow-xl"
+                text="Stop Losing Money - Book Now"
+                size="lg"
+                showIcon={true}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Strong Close */}
-      <section className="py-20 bg-white">
+      {/* Value Comparison */}
+      <section className="py-16 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Why We're Different
+            </h2>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white rounded-xl shadow-xl overflow-hidden">
+              <thead className="bg-gradient-to-r from-blue-600 to-green-600 text-white">
+                <tr>
+                  <th className="px-6 py-4 text-left"></th>
+                  <th className="px-6 py-4 text-center">Big Consultancies</th>
+                  <th className="px-6 py-4 text-center">DIY Tools</th>
+                  <th className="px-6 py-4 text-center bg-green-700">OptAImum</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr>
+                  <td className="px-6 py-4 font-semibold">Price</td>
+                  <td className="px-6 py-4 text-center text-red-600">$500k+</td>
+                  <td className="px-6 py-4 text-center text-orange-600">$500/mo + Your Time</td>
+                  <td className="px-6 py-4 text-center bg-green-50 font-bold text-green-600">From $3k</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-semibold">Timeline</td>
+                  <td className="px-6 py-4 text-center">6-12 months</td>
+                  <td className="px-6 py-4 text-center">Never-ending</td>
+                  <td className="px-6 py-4 text-center bg-green-50 font-bold">30 days</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-semibold">Support</td>
+                  <td className="px-6 py-4 text-center">Disappear after delivery</td>
+                  <td className="px-6 py-4 text-center">YouTube tutorials</td>
+                  <td className="px-6 py-4 text-center bg-green-50 font-bold">Weekly office hours</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Stop Reading. Start Automating.
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            30-minute call. We'll identify your biggest time-waster and show you
-            exactly how to fix it. No consultant speak. No massive proposal. Just solutions.
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            30-minute call. We'll identify your biggest time-waster and show you exactly how to fix it.
           </p>
 
-          <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl inline-block">
-            <p className="text-gray-700 mb-2">What you'll get in 30 minutes:</p>
-            <ul className="text-left text-sm text-gray-600 space-y-1 max-w-md">
-              <li>✓ Your #1 automation opportunity identified</li>
-              <li>✓ Real examples from similar businesses</li>
-              <li>✓ Ballpark ROI and timeline</li>
-              <li>✓ Clear next steps (with or without us)</li>
+          <div className="bg-white/10 backdrop-blur rounded-xl p-6 mb-8">
+            <p className="text-white font-semibold mb-4">What you'll get in 30 minutes:</p>
+            <ul className="text-left text-white space-y-2 max-w-md mx-auto">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                <span>Your #1 automation opportunity identified</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                <span>Real examples from similar businesses</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                <span>Ballpark ROI and timeline</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                <span>Clear next steps (with or without us)</span>
+              </li>
             </ul>
           </div>
 
-          <div className="mt-8">
-            <CalendlyButton
-              size="lg"
-              className="gradient-brand text-white hover:opacity-90 transition-opacity shadow-lg"
-            >
-              Book Your Free 30-Minute Assessment
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </CalendlyButton>
-          </div>
+          <CalendlyCTA
+            mode="popup"
+            buttonClassName="bg-white text-blue-600 px-12 py-5 text-xl font-bold rounded-lg shadow-2xl hover:shadow-3xl"
+            text="Book Your Free Assessment Now"
+            size="lg"
+            showIcon={true}
+          />
 
-          <p className="mt-6 text-sm text-gray-500">
+          <p className="mt-6 text-blue-100">
             No sales pressure. If we can't help, we'll tell you straight up.
           </p>
+        </div>
+      </section>
 
-          <div className="mt-8 p-4 bg-blue-50 rounded-xl">
-            <p className="text-sm font-semibold text-blue-900">
-              {Copy.footer.note}
+      {/* Inline Calendly Section for Contact Page */}
+      <section id="book-inline" className="py-16 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Schedule Your Free Assessment
+            </h2>
+            <p className="text-xl text-gray-600">
+              Pick a time that works for you. We'll call you.
             </p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-xl p-2">
+            <CalendlyCTA
+              mode="inline"
+              minHeight={650}
+              className="rounded-lg overflow-hidden"
+            />
           </div>
         </div>
       </section>
+
+      {/* Chat Widget Placeholder */}
+      <div className="fixed bottom-8 right-8 z-50">
+        <button className="bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition-colors group">
+          <MessageSquare className="h-6 w-6" />
+          <span className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            Questions? Let's chat!
+          </span>
+        </button>
+      </div>
     </div>
   )
 }

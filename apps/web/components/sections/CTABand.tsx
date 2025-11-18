@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { CalendlyButton } from '@/components/CalendlyButton'
 import homeContent from '@/content/home.json'
 
 export function CTABand() {
@@ -12,13 +12,11 @@ export function CTABand() {
             {cta.headline}
           </h2>
           <div className="mt-8">
-            <Link
-              href={cta.buttonLink}
+            <CalendlyButton
+              text={cta.buttonText}
               className="inline-flex items-center justify-center rounded-md bg-white px-8 py-3 text-base font-semibold text-optaimum-blue shadow-sm hover:bg-gray-100 transition-colors"
-            >
-              {cta.buttonText}
-              <span className="ml-2" aria-hidden="true">→</span>
-            </Link>
+              variant="secondary"
+            />
           </div>
         </div>
       </div>

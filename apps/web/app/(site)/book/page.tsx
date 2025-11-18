@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Calendar, Clock, Video, CheckCircle } from 'lucide-react'
-import { CalendarEmbed } from '@/components/booking/CalendarEmbed'
+import { CalendlyEmbed } from '@/components/booking/CalendlyEmbed'
 
 export default function BookPage() {
   return (
@@ -90,22 +90,8 @@ export default function BookPage() {
 
             {/* Calendar Widget */}
             <div className="lg:col-span-2">
-              <div className="rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden p-4">
-                <CalendarEmbed
-                  calLink="optaimum/discovery-call"
-                  config={{
-                    layout: 'month_view',
-                    theme: 'light'
-                  }}
-                />
-
-                {/* Note about Cal.com - will be replaced with actual booking link */}
-                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                  <p className="text-sm text-blue-900">
-                    <strong>Note:</strong> To enable bookings, sign up for a free Cal.com account and update the
-                    calendar link in the CalendarEmbed component with your actual booking URL.
-                  </p>
-                </div>
+              <div className="rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden">
+                <CalendlyEmbed minHeight={700} />
               </div>
 
               <div className="mt-6 text-center">

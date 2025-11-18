@@ -1,4 +1,4 @@
-// File: D:\Workspace\Optaimumsite\apps\web\app\(site)\page.tsx
+// File: C:\Users\jgewi\OneDrive\Attachments\Desktop\website\optaimum-site\apps\web\app\(site)\page.tsx
 import * as entry from '../../../../app/(site)/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

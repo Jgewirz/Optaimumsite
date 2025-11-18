@@ -10,20 +10,20 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 100% 50%;
+    --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 144 61% 20%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 100% 50%;
-    --radius: 0.5rem;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -35,11 +35,11 @@
     --popover-foreground: 210 40% 98%;
     --primary: 217.2 100% 50%;
     --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 142 76% 36%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 142 76% 36%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -58,38 +58,163 @@
 }
 
 @layer utilities {
-  /* Custom OptAImum utilities with new gradient theme */
+  /* Modern Blue-Green Gradient Theme */
   .gradient-brand {
-    background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+    background: linear-gradient(135deg, #3b82f6, #2563eb, #10b981, #059669);
+  }
+
+  .gradient-brand-reverse {
+    background: linear-gradient(135deg, #059669, #10b981, #2563eb, #3b82f6);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+    background: linear-gradient(135deg, #3b82f6, #10b981);
   }
 
-  .gradient-border {
+  .gradient-text-reverse {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Section Backgrounds */
+  .gradient-section {
+    background: linear-gradient(to bottom right, #eff6ff, #ffffff, #f0fdf4);
+  }
+
+  .gradient-section-reverse {
+    background: linear-gradient(to top left, #eff6ff, #ffffff, #f0fdf4);
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-blue-600 px-8 py-4 text-lg font-semibold rounded-lg border-2 border-blue-200 hover:bg-blue-50 transition-colors;
+  }
+
+  .btn-success {
+    @apply bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all;
+  }
+
+  /* Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Card Styles */
+  .card-gradient-border {
     position: relative;
     background: linear-gradient(#fff, #fff) padding-box,
-                linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6) border-box;
+                linear-gradient(135deg, #3b82f6, #10b981) border-box;
     border: 2px solid transparent;
     border-radius: 1rem;
   }
 
-  .gradient-hover {
-    @apply transition-all duration-300;
-  }
-
-  .gradient-hover:hover {
-    transform: translateY(-2px);
+  /* Shadow Effects */
+  .shadow-blue {
     box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.25);
   }
 
-  .optaimum-shadow {
-    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
+  .shadow-green {
+    box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.25);
   }
 
+  /* Text Effects */
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Stat Card Borders */
+  .border-top-gradient {
+    border-top: 4px solid;
+    border-image: linear-gradient(90deg, #3b82f6, #10b981) 1;
+  }
+
+  /* Animation Classes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Responsive Container */
+  .container-narrow {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Padding */
+  .section-padding {
+    @apply py-20 sm:py-24;
+  }
+
+  /* Heading Styles */
+  .heading-xl {
+    @apply text-5xl sm:text-6xl font-bold tracking-tight text-gray-900;
+  }
+
+  .heading-lg {
+    @apply text-4xl font-bold text-gray-900;
+  }
+
+  .heading-md {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .subheading {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto;
+  }
+
+  /* Badge Styles */
+  .badge-blue {
+    @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-100 to-green-100 px-4 py-2;
+  }
+
+  /* Trust Badge */
+  .trust-badge {
+    @apply flex items-center gap-2 text-gray-600;
+  }
+
+  /* Metric Card */
+  .metric-card {
+    @apply bg-white rounded-xl shadow-lg p-6 border-t-4 hover:shadow-xl transition-shadow;
+  }
+
+  /* Testimonial Card */
+  .testimonial-card {
+    @apply bg-white rounded-xl shadow-xl p-8 border-t-4 border-blue-500 hover:shadow-2xl transition-shadow;
+  }
+
+  /* Timeline Item */
+  .timeline-dot {
+    @apply w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center border-4 z-10 relative;
+  }
+
+  /* Form Inputs */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  /* CTA Section */
+  .cta-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-green-600 text-white;
+  }
+
+  /* Chat Widget */
+  .chat-widget {
+    @apply fixed bottom-8 right-8 z-50 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition-colors;
   }
 }

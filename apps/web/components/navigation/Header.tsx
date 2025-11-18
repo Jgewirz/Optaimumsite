@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Logo } from '@/components/ui/logo'
 import { Button } from '@/components/ui/button'
-import { CalendlyButton } from '@/components/CalendlyButton'
+import { CalendlyCTA } from '@/components/CalendlyCTA'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
@@ -47,9 +47,12 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex md:items-center">
-            <CalendlyButton
-              className="gradient-brand text-white hover:opacity-90 transition-opacity"
+            <CalendlyCTA
+              mode="popup"
+              buttonClassName="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 shadow-lg hover:shadow-xl"
               text="Book Free Assessment"
+              size="default"
+              showIcon={true}
             />
           </div>
 
@@ -89,9 +92,11 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <CalendlyButton
-                  className="w-full gradient-brand text-white hover:opacity-90 transition-opacity"
+                <CalendlyCTA
+                  mode="popup"
+                  buttonClassName="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white"
                   text="Book Free Assessment"
+                  showIcon={true}
                 />
               </div>
             </div>

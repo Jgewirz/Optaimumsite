@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import homeContent from '@/content/home.json'
+import { CalendlyButton } from '@/components/CalendlyButton'
 
 export function Hero() {
   const { hero } = homeContent
@@ -15,12 +16,10 @@ export function Hero() {
             {hero.sub}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link
-              href="/book"
+            <CalendlyButton
+              text={hero.primaryCta}
               className="rounded-md bg-optaimum-blue px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-optaimum-blue-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-optaimum-blue"
-            >
-              {hero.primaryCta}
-            </Link>
+            />
             <Link
               href="/case-studies"
               className="text-base font-semibold leading-6 text-gray-900 hover:text-optaimum-blue transition-colors"

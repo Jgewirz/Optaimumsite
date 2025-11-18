@@ -19,7 +19,7 @@ interface CalendlyButtonProps {
 }
 
 export function CalendlyButton({
-  url = 'https://calendly.com/jack-gewirz/30min', // Your Calendly link
+  url = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/optaimum/business-assessment?month=2025-11',
   text = 'Book Free Assessment',
   className = '',
   children,
